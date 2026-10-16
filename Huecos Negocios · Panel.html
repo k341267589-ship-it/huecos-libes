@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Huecos Negocios · Panel</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F6F4;--card:#fff;--ink:#0D2E2F;--mute:#5E7270;--line:#E2EAE6;--brand:#0F4C4A;--bi:#fff;--coral:#F2545B;--soft:#E3EFEA;--ok:#14855F;--warn:#B7791F;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A1A1B;--card:#12292A;--ink:#EAF4F1;--mute:#93ABA7;--line:#1F3A3B;--brand:#58D3C3;--bi:#06201F;--soft:#173836;--ok:#4ADE9E;--warn:#F6C453}}
+:root[data-theme="dark"]{--bg:#0A1A1B;--card:#12292A;--ink:#EAF4F1;--mute:#93ABA7;--line:#1F3A3B;--brand:#58D3C3;--bi:#06201F;--soft:#173836;--ok:#4ADE9E;--warn:#F6C453}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:Figtree,system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.35;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.shell{display:block;min-height:100vh}
+aside{display:none}
+main{padding:18px 16px 96px;max-width:980px;margin:0 auto}
+@media(min-width:900px){.shell{display:grid;grid-template-columns:236px 1fr}
+aside{display:flex;flex-direction:column;gap:4px;padding:22px 14px;background:var(--card);border-right:1px solid var(--line);position:sticky;top:0;height:100vh}
+main{padding:30px 32px 48px;width:100%}#bnav{display:none}}
+.brand{font-weight:800;font-size:22px;letter-spacing:-.03em;padding:0 10px 2px}.brand small{display:block;font-size:12px;font-weight:700;color:var(--coral);letter-spacing:0}
+.nv{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;font-weight:700;color:var(--mute);text-align:left}
+.nv svg{width:20px;height:20px;flex:none}.nv[aria-current=page]{background:var(--soft);color:var(--brand)}
+.me{margin-top:auto;padding:12px;border-radius:14px;background:var(--soft);font-size:14px}.me b{display:block}.me span{color:var(--mute)}
+#bnav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);z-index:5;display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+#bnav .nv{flex-direction:column;gap:3px;font-size:11px;padding:9px 2px 8px;border-radius:0;background:none;text-align:center}
+#bnav .nv[aria-current=page]{background:none}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+h1{font-size:28px;font-weight:800;letter-spacing:-.025em;line-height:1.1}.lead{color:var(--mute);font-size:15px;margin-bottom:18px}
+h2{font-size:18px;font-weight:800;margin:26px 0 12px;letter-spacing:-.01em}
+.btn{background:var(--brand);color:var(--bi);font-weight:800;padding:12px 18px;border-radius:14px;font-size:15px}
+.btn.s{padding:7px 12px;font-size:13px;border-radius:10px;background:var(--soft);color:var(--brand)}
+.btn.o{background:none;border:1.5px solid var(--line);color:var(--ink)}
+.btn.c{background:var(--coral);color:#fff}.btn.s.d{color:var(--coral)}
+.promo{background:var(--brand);color:var(--bi);border-radius:18px;padding:14px 16px;margin-bottom:18px;display:flex;gap:12px;align-items:center;font-size:14px}.promo b{font-size:16px;display:block}
+.kp{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}@media(min-width:700px){.kp{grid-template-columns:repeat(4,1fr)}}
+.k,.cd{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+.k span{font-size:13px;color:var(--mute);font-weight:700}.k b{display:block;font-size:28px;font-weight:800;letter-spacing:-.03em;margin-top:4px}.k i{font-style:normal;font-size:12px;color:var(--ok);font-weight:700}
+.it{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 14px;display:grid;grid-template-columns:72px 1fr;gap:6px 14px;align-items:center;margin-bottom:10px}
+.tb b{font-size:22px;font-weight:800;letter-spacing:-.03em;display:block;line-height:1}.tb span{font-size:12px;color:var(--mute);font-weight:600}
+.mid b{display:block;font-size:16px}.mid span{font-size:13px;color:var(--mute)}
+.act{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;padding-top:6px;border-top:1px solid var(--line)}
+@media(min-width:700px){.it{grid-template-columns:84px 1fr auto}.act{grid-column:auto;border:0;padding:0}}
+.pl{display:inline-block;font-weight:800;font-size:12px;padding:3px 9px;border-radius:99px;background:var(--soft);color:var(--brand);margin-right:6px}
+.pl.c{background:var(--coral);color:#fff}.pl.w{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}.pl.g{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}
+.seg{display:inline-flex;background:var(--soft);border-radius:12px;padding:3px;margin-bottom:16px}.seg button{padding:8px 14px;border-radius:9px;font-weight:700;font-size:14px;color:var(--mute)}.seg button[aria-pressed=true]{background:var(--card);color:var(--ink)}
+.two{display:grid;gap:12px}@media(min-width:760px){.two{grid-template-columns:1fr 1fr}}
+.bar{height:8px;border-radius:9px;background:var(--soft);overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;background:var(--brand)}
+.sv{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;gap:10px}.sv:last-child{border:0}.sv span{color:var(--mute);font-size:13px}
+.tg{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}.tg:last-child{border:0}.tg span{display:block;color:var(--mute);font-size:13px}
+.sw{flex:none;width:46px;height:28px;border-radius:99px;background:var(--line);position:relative;transition:.2s}.sw::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}
+.sw[aria-checked=true]{background:var(--brand)}.sw[aria-checked=true]::after{left:21px}
+@media(prefers-reduced-motion:reduce){.sw,.sw::after{transition:none}}
+.plus{background:linear-gradient(135deg,var(--brand),#1B7A6E);color:var(--bi);border-radius:20px;padding:20px}.plus li{margin:6px 0 6px 18px;font-size:14px}.plus h3{font-size:20px}
+.veil{position:fixed;inset:0;background:rgba(8,24,24,.55);z-index:30;display:none;align-items:flex-end;justify-content:center}.veil.on{display:flex}
+@media(min-width:700px){.veil{align-items:center}}
+.mod{background:var(--card);width:100%;max-width:480px;border-radius:24px 24px 0 0;padding:22px 20px calc(20px + env(safe-area-inset-bottom,0px));max-height:94vh;overflow:auto}
+@media(min-width:700px){.mod{border-radius:24px}}
+.fl{display:grid;gap:6px;margin-top:14px;font-weight:700;font-size:14px}
+.fl input,.fl select{padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);font-weight:500;font-size:16px;width:100%}
+.fl input[type=range]{padding:0;accent-color:var(--brand)}
+.rw{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sum{background:var(--soft);border-radius:16px;padding:6px 14px;margin-top:16px}.sum div{display:flex;justify-content:space-between;padding:7px 0;font-size:14px}.sum .t{font-weight:800;font-size:16px;border-top:1px solid var(--line)}
+.sg{margin-top:6px;font-size:13px;color:var(--mute)}.sg button{color:var(--brand);font-weight:800;text-decoration:underline}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 16px;border-radius:12px;font-weight:700;font-size:14px;z-index:50;display:none;max-width:90%;text-align:center}.toast.on{display:block}
+.em{text-align:center;color:var(--mute);padding:36px 16px}
+</style>
+</head>
+<body>
+<div class="shell"><aside id="side"></aside><main id="main"></main></div>
+<nav id="bnav" aria-label="Principal"></nav>
+<div class="veil" id="veil"><div class="mod" id="mod" role="dialog" aria-modal="true"></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const $=id=>document.getElementById(id),eur=n=>(Math.round(n*100)/100).toLocaleString('es-ES')+' €';
+const T=m=>{const d=new Date(Date.now()+m*6e4);d.setMinutes(Math.ceil(d.getMinutes()/5)*5,0,0);return d};
+const hh=d=>d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+const mins=s=>Math.round((s.t-Date.now())/6e4);
+const left=m=>m<0?'ya empezó':m<60?`en ${m} min`:`en ${Math.floor(m/60)} h${m%60?' '+m%60+' min':''}`;
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const D={promoDays:23,rate:.12,tab:'home',seg:'live',
+svc:[{id:1,n:'Corte y secado',p:38,d:60},{id:2,n:'Color y mechas',p:85,d:120},{id:3,n:'Peinado de fiesta',p:45,d:60},{id:4,n:'Tratamiento de keratina',p:70,d:90}],
+sl:[{id:1,s:1,t:T(-110),disc:20,st:'done',cl:'Marta G.',nw:false},{id:2,s:2,t:T(-45),disc:20,st:'done',cl:'Elena V.',nw:true},
+{id:3,s:1,t:T(40),disc:30,st:'booked',cl:'Lucía M.',nw:true,wl:2},{id:4,s:3,t:T(75),disc:25,st:'live'},
+{id:5,s:4,t:T(130),disc:0,gift:'Mascarilla de regalo',st:'live'},{id:6,s:2,t:T(200),disc:20,st:'booked',cl:'Andrea P.',nw:true,wl:0},{id:7,s:1,t:T(260),disc:15,st:'live'}],
+week:[112,86,140,95,170,132],opt:{auto:true,wait:true,min:10}};
+const sv=s=>D.svc.find(x=>x.id===s.s),cp=s=>Math.round(sv(s).p*(1-s.disc/100)),rate=()=>D.promoDays>0?0:D.rate,net=s=>cp(s)*(1-rate());
+const bk=()=>D.sl.filter(s=>s.st!=='live'&&s.st!=='cancelled');
+const sold=()=>D.sl.filter(s=>['booked','done'].includes(s.st));
+const sug=(m,d)=>(m<=60?30:m<=120?25:m<=240?20:15)+(d>=90?5:0);
+const offer=s=>s.disc?`<span class="pl c">−${s.disc}%</span>`:`<span class="pl g">Regalo: ${esc(s.gift)}</span>`;
+const ic={home:'<path d="M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/>',slots:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',res:'<rect x="4" y="5" width="16" height="16" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/>',stats:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',biz:'<path d="M4 9l2-5h12l2 5M4 9v11h16V9M4 9h16M10 20v-6h4v6"/>'};
+const TABS=[['home','Hoy'],['slots','Huecos'],['res','Reservas'],['stats','Estadísticas'],['biz','Mi negocio']];
+const nav=()=>TABS.map(([k,t])=>`<button class="nv" data-tab="${k}" ${D.tab===k?'aria-current="page"':''}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ic[k]}</svg>${t}</button>`).join('');
+function slotRow(s){const m=mins(s),x=sv(s);let a='';
+if(s.st==='live')a=`<button class="btn s" data-edit="${s.id}">Editar oferta</button><button class="btn s" data-sim="${s.id}">Simular reserva</button><button class="btn s d" data-del="${s.id}">Retirar</button>`;
+return `<div class="it"><div class="tb"><b>${hh(s.t)}</b><span>${s.t.getDate()!==new Date().getDate()?'Mañana':left(m)}</span></div><div class="mid"><b>${esc(x.n)}</b>${offer(s)}<span>${x.d} min · ${eur(x.p)} → <b style="display:inline">${eur(cp(s))}</b></span></div><div class="act">${a}</div></div>`}
+function resRow(s){const x=sv(s),m=mins(s);const L={booked:['Confirmada','w'],done:['Atendida','g'],noshow:['No vino','c']}[s.st];
+const a=s.st==='booked'?`<button class="btn s" data-att="${s.id}">Marcar atendida</button><button class="btn s" data-ns="${s.id}">No vino</button><button class="btn s d" data-cx="${s.id}">Cancelar</button>`:'';
+return `<div class="it"><div class="tb"><b>${hh(s.t)}</b><span>${s.st==='booked'?left(m):'Hoy'}</span></div><div class="mid"><b>${esc(s.cl)} ${s.nw?'<span class="pl">Cliente nuevo</span>':''}</b><span>${esc(x.n)} · cobras ${eur(net(s))}</span><span><i class="pl ${L[1]}" style="font-style:normal">${L[0]}</i>${s.wl?` ${s.wl} en lista de espera`:''}</span></div><div class="act">${a}</div></div>`}
+function render(){const t=D.tab;let h='';const rev=sold().reduce((a,s)=>a+net(s),0);
+const promo=D.promoDays>0?`<div class="promo"><div><b>Primer mes sin comisión</b>Te quedan ${D.promoDays} días: te quedas con el 100% de cada hueco vendido.</div></div>`:'';
+if(t==='home'){const nx=D.sl.filter(s=>s.st==='booked').sort((a,b)=>a.t-b.t),push=D.sl.filter(s=>s.st==='live'&&mins(s)<=90&&s.disc<50);
+h=`<div class="hd"><h1>Hola, Salón Marea</h1><button class="btn" data-new>Publicar hueco</button></div><p class="lead">Así va tu día con Huecos.</p>${promo}
+<div class="kp"><div class="k"><span>Ingresos de hoy</span><b>${eur(rev)}</b></div><div class="k"><span>Huecos vendidos</span><b>${sold().length}/${D.sl.length}</b></div><div class="k"><span>Clientes nuevos</span><b>${sold().filter(s=>s.nw).length}</b></div><div class="k"><span>Horas recuperadas</span><b>${(sold().reduce((a,s)=>a+sv(s).d,0)/60).toFixed(1).replace('.',',')} h</b></div></div>
+${push.length?`<h2>Huecos que empiezan pronto sin reservar</h2>${push.map(s=>`<div class="it"><div class="tb"><b>${hh(s.t)}</b><span>${left(mins(s))}</span></div><div class="mid"><b>${esc(sv(s).n)}</b><span>Sin reservar. Con ${Math.min(50,s.disc+5)}% de descuento se llena antes.</span></div><div class="act"><button class="btn s" data-boost="${s.id}">Subir a −${Math.min(50,s.disc+5)}%</button></div></div>`).join('')}`:''}
+<h2>Próximas citas</h2>${nx.length?nx.map(resRow).join(''):'<div class="em">No tienes citas pendientes. Publica un hueco para llenar tu agenda.</div>'}`}
+else if(t==='slots'){const f={live:['live'],booked:['booked'],past:['done','noshow']}[D.seg],L=D.sl.filter(s=>f.includes(s.st)).sort((a,b)=>a.t-b.t);
+h=`<div class="hd"><h1>Huecos</h1><button class="btn" data-new>Publicar hueco</button></div><p class="lead">Citas libres que ofreces con descuento.</p>
+<div class="seg">${[['live','Publicados'],['booked','Reservados'],['past','Historial']].map(([k,l])=>`<button data-seg="${k}" aria-pressed="${D.seg===k}">${l}</button>`).join('')}</div>
+${L.length?L.map(s=>s.st==='live'?slotRow(s):resRow(s)).join(''):'<div class="em">No hay huecos en esta lista.</div>'}`}
+else if(t==='res'){const L=bk().sort((a,b)=>a.t-b.t);h=`<h1>Reservas</h1><p class="lead">Clientes que han reservado a través de Huecos.</p>${L.length?L.map(resRow).join(''):'<div class="em">Aún no tienes reservas.</div>'}`}
+else if(t==='stats'){const w=[...D.week,Math.round(rev)],mx=Math.max(...w,1),dn=['L','M','X','J','V','S','Hoy'],all=sold(),nw=all.filter(s=>s.nw).length,live=D.sl.filter(s=>s.st!=='cancelled').length;
+const tops=D.svc.map(x=>[x.n,all.filter(s=>s.s===x.id).length]).sort((a,b)=>b[1]-a[1]);
+h=`<h1>Estadísticas</h1><p class="lead">Lo que te aportan los huecos de última hora.</p>
+<div class="cd"><b>Ingresos por huecos, últimos 7 días</b><svg viewBox="0 0 340 140" style="width:100%;margin-top:10px" role="img" aria-label="Gráfica de ingresos">${w.map((v,i)=>{const hgt=v/mx*100;return `<rect x="${i*48+8}" y="${110-hgt}" width="32" height="${hgt}" rx="8" fill="${i===6?'var(--coral)':'var(--brand)'}" opacity="${i===6?1:.85}"/><text x="${i*48+24}" y="130" text-anchor="middle" font-size="11" fill="var(--mute)">${dn[i]}</text><text x="${i*48+24}" y="${104-hgt}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">${v}</text>`}).join('')}</svg></div>
+<div class="kp" style="margin-top:12px"><div class="k"><span>Huecos vendidos</span><b>${live?Math.round(all.length/live*100):0}%</b></div><div class="k"><span>Clientes nuevos</span><b>${nw}</b></div><div class="k"><span>Comisión pagada</span><b>${eur(all.reduce((a,s)=>a+cp(s)*rate(),0))}</b></div><div class="k"><span>Valoración media</span><b>4,8</b></div></div>
+<h2>Servicios que más se venden</h2><div class="cd">${tops.map(([n,c])=>`<div class="sv" style="display:block"><div style="display:flex;justify-content:space-between"><span style="color:var(--ink);font-size:15px">${esc(n)}</span><b>${c}</b></div><div class="bar"><i style="width:${c/Math.max(1,tops[0][1])*100}%"></i></div></div>`).join('')}</div>
+<div class="plus" style="margin-top:18px"><h3>Estadísticas avanzadas con Plus</h3><p style="font-size:14px;margin-top:4px">Descubre qué clientes llegaron por la app y cuántos vuelven.</p></div>`}
+else{h=`<h1>Mi negocio</h1><p class="lead">Servicios, reglas y plan.</p>
+<div class="two"><div class="cd"><b>Servicios</b>${D.svc.map(x=>`<div class="sv"><div>${esc(x.n)}<br><span>${x.d} min</span></div><b>${eur(x.p)}</b></div>`).join('')}
+<form id="ns" style="display:grid;gap:8px;margin-top:12px" onsubmit="return false"><input id="sn" placeholder="Nuevo servicio" aria-label="Nombre del servicio" class="fl" style="padding:11px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg)"><div class="rw"><input id="sp" type="number" min="1" placeholder="Precio €" aria-label="Precio" style="padding:11px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg)"><input id="sd" type="number" min="15" step="5" placeholder="Minutos" aria-label="Duración" style="padding:11px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg)"></div><button class="btn" data-addsvc type="button">Añadir servicio</button></form></div>
+<div class="cd"><b>Reglas automáticas</b>
+<div class="tg"><div>Sugerir descuento<span>Calculamos el descuento según la hora y la duración.</span></div><button class="sw" role="switch" data-opt="auto" aria-checked="${D.opt.auto}" aria-label="Sugerir descuento"></button></div>
+<div class="tg"><div>Avisar a la lista de espera<span>Si alguien cancela, avisamos a la siguiente persona.</span></div><button class="sw" role="switch" data-opt="wait" aria-checked="${D.opt.wait}" aria-label="Lista de espera"></button></div>
+<div class="tg"><div>Descuento mínimo<span>Nunca ofreceremos menos de este valor.</span></div><select data-min aria-label="Descuento mínimo" style="padding:9px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg)">${[10,15,20].map(v=>`<option value="${v}" ${D.opt.min===v?'selected':''}>${v}%</option>`).join('')}</select></div></div></div>
+<h2>Plan y comisión</h2><div class="two"><div class="cd"><b>Plan Básico</b><p style="color:var(--mute);font-size:14px;margin:6px 0">Comisión por hueco vendido: ${Math.round(D.rate*100)}% (entre 8% y 20%). Solo pagas si vendes.</p><span class="pl g">${D.promoDays>0?`Sin comisión ${D.promoDays} días más`:'Activo'}</span></div>
+<div class="plus"><h3>Plan Plus</h3><ul><li>Prioridad de visibilidad en la app</li><li>Estadísticas y clientes captados</li><li>Agenda completa para reservas normales</li></ul><button class="btn" style="background:#fff;color:#0F4C4A;margin-top:6px" data-plus>Probar Plus</button></div></div>`}
+$('main').innerHTML=h;$('side').innerHTML=`<div class="brand">Huecos<small>para negocios</small></div><div style="height:14px"></div>${nav()}<div class="me"><b>Salón Marea</b><span>Peluquería · Plan Básico</span></div>`;$('bnav').innerHTML=nav()}
+function modal(id){const s=id?D.sl.find(x=>x.id===id):null,x=s?sv(s):D.svc[0],d0=s?s.t:T(60);
+$('mod').innerHTML=`<h1 style="font-size:24px">${s?'Editar oferta':'Publicar hueco'}</h1><p class="lead" style="margin-bottom:0">Tu cliente lo verá al instante en la app.</p>
+<label class="fl">Servicio<select id="fs" ${s?'disabled':''}>${D.svc.map(v=>`<option value="${v.id}" ${v.id===x.id?'selected':''}>${esc(v.n)} · ${v.d} min · ${eur(v.p)}</option>`).join('')}</select></label>
+<div class="rw"><label class="fl">Día<select id="fy" ${s?'disabled':''}><option value="0">Hoy</option><option value="1" ${s&&s.t.getDate()!==new Date().getDate()?'selected':''}>Mañana</option></select></label><label class="fl">Hora<input id="ft" type="time" value="${hh(d0)}" ${s?'disabled':''}></label></div>
+<div class="seg" style="margin:16px 0 0"><button data-ot="d" id="od" aria-pressed="${!s||s.disc>0}">Descuento</button><button data-ot="g" id="og" aria-pressed="${s&&!s.disc}">Extra de regalo</button></div>
+<div id="of"></div><div class="sum" id="sm"></div>
+<button class="btn" style="width:100%;margin-top:16px;padding:15px" data-save="${s?s.id:''}">${s?'Guardar cambios':'Publicar hueco'}</button><button class="btn o" style="width:100%;margin-top:8px" data-close>Cancelar</button>`;
+$('veil').classList.add('on');offerUI(s?s.disc:null,s&&s.gift)}
+function when(){const f=$('ft').value||'00:00',d=new Date();d.setDate(d.getDate()+(+$('fy').value));const[a,b]=f.split(':');d.setHours(+a,+b,0,0);return d}
+function offerUI(disc,gift){const g=$('og').getAttribute('aria-pressed')==='true',x=D.svc.find(v=>v.id==$('fs').value),sg=Math.max(D.opt.min,sug(Math.max(0,Math.round((when()-Date.now())/6e4)),x.d));
+$('of').innerHTML=g?`<label class="fl">¿Qué regalas?<input id="fg" maxlength="40" value="${esc(gift||'Mascarilla de regalo')}"></label>`:`<label class="fl">Descuento: <span id="dv">${disc||sg}%</span><input id="fr" type="range" min="${D.opt.min}" max="50" step="5" value="${disc||sg}"></label>${D.opt.auto?`<div class="sg">Sugerido: ${sg}% según la hora. <button data-use="${sg}">Usar sugerido</button></div>`:''}`;sum()}
+function sum(){const x=D.svc.find(v=>v.id==$('fs').value),g=$('og').getAttribute('aria-pressed')==='true',dc=g?0:+$('fr').value,c=Math.round(x.p*(1-dc/100));if($('dv'))$('dv').textContent=dc+'%';
+$('sm').innerHTML=`<div><span>Precio normal</span><b>${eur(x.p)}</b></div><div><span>El cliente paga</span><b>${eur(c)}</b></div><div><span>Comisión (${D.promoDays>0?'0% primer mes':Math.round(D.rate*100)+'%'})</span><b>−${eur(c*rate())}</b></div><div class="t"><span>Tú recibes</span><b>${eur(c*(1-rate()))}</b></div>`}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2400)}
+const close=()=>$('veil').classList.remove('on'),by=id=>D.sl.find(s=>s.id==id);
+document.addEventListener('click',e=>{const t=e.target.closest('button');if(!t){if(e.target.id==='veil')close();return}const d=t.dataset;
+if(d.tab){D.tab=d.tab;render();return scrollTo(0,0)}
+if(d.new!==undefined)return modal();
+if(d.edit)return modal(+d.edit);
+if(d.close!==undefined)return close();
+if(d.seg){D.seg=d.seg;return render()}
+if(d.ot){$('od').setAttribute('aria-pressed',d.ot==='d');$('og').setAttribute('aria-pressed',d.ot==='g');return offerUI()}
+if(d.use){$('fr').value=d.use;return sum()}
+if(d.save!==undefined){const g=$('og').getAttribute('aria-pressed')==='true',disc=g?0:+$('fr').value,gift=g?($('fg').value.trim()||'Extra de regalo'):null;
+if(d.save){const s=by(d.save);s.disc=disc;s.gift=gift;close();render();return toast('Oferta actualizada')}
+const w=when();if(w<=Date.now())return toast('Elige una hora futura');if(D.sl.some(s=>s.st!=='cancelled'&&Math.abs(s.t-w)<36e5&&s.s==+$('fs').value&&s.t.getTime()===w.getTime()))return toast('Ya tienes ese hueco publicado');
+D.sl.push({id:Date.now(),s:+$('fs').value,t:w,disc,gift,st:'live'});close();D.tab='slots';D.seg='live';render();return toast('Hueco publicado. Ya es visible para los clientes')}
+if(d.del){D.sl=D.sl.filter(s=>s.id!=d.del);render();return toast('Hueco retirado')}
+if(d.boost){const s=by(d.boost);s.disc=Math.min(50,s.disc+5);render();return toast(`Descuento subido a ${s.disc}%`)}
+if(d.sim){const s=by(d.sim),n=['Sara L.','Pablo R.','Noa F.','Iván C.'][Math.floor(Math.random()*4)];s.st='booked';s.cl=n;s.nw=Math.random()>.4;s.wl=0;render();return toast(`Nueva reserva de ${n}: +${eur(net(s))}`)}
+if(d.att){by(d.att).st='done';render();return toast('Cita marcada como atendida')}
+if(d.ns){by(d.ns).st='noshow';render();return toast('Marcada como no asistida')}
+if(d.cx){const s=by(d.cx),w=s.wl||0;s.st='live';delete s.cl;s.wl=0;render();return toast(D.opt.wait&&w?`Hueco liberado. Avisando a ${w} personas en lista de espera`:'Reserva cancelada. El hueco vuelve a estar publicado')}
+if(d.opt){D.opt[d.opt]=!D.opt[d.opt];return render()}
+if(d.plus)return toast('Te avisaremos cuando Plus esté disponible');
+if(d.addsvc!==undefined){const n=$('sn').value.trim(),p=+$('sp').value,m=+$('sd').value;if(!n||!p||!m)return toast('Completa nombre, precio y duración');D.svc.push({id:Date.now(),n,p,d:m});render();return toast('Servicio añadido')}});
+document.addEventListener('input',e=>{if(e.target.id==='fr'||e.target.id==='fg')sum()});
+document.addEventListener('change',e=>{const i=e.target.id;if(i==='fs'||i==='ft'||i==='fy')offerUI();if(e.target.hasAttribute('data-min'))D.opt.min=+e.target.value});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+render();
+</script>
+</body>
+</html>
